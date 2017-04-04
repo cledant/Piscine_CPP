@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2017/04/03 12:35:01 by cledant          ###   ########.fr        #
+#    Updated: 2017/04/04 21:15:07 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS_NAME = megaphone.cpp
 
 SRCS_PATH = .
 
-OBJ_SRCS = $(SRCS_NAME:%.c=$(OBJ_DIR_NAME)/%.o)
+OBJ_SRCS = $(SRCS_NAME:%.cpp=$(OBJ_DIR_NAME)/%.o)
 
 NAME = megaphone
 
@@ -29,7 +29,7 @@ all : $(NAME)
 $(NAME) : $(OBJ_SRCS)
 	$(CC) -o $@ $^ $(CFLAGS)
 
-$(OBJ_DIR_NAME)/%.o : $(SRCS_PATH)/%.c
+$(OBJ_DIR_NAME)/%.o : $(SRCS_PATH)/%.cpp
 	mkdir -p $(OBJ_DIR_NAME)
 	$(CC) -o $@ -c $< $(CFLAGS)
 

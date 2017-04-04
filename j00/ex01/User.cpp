@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/03 14:03:54 by cledant           #+#    #+#             */
-/*   Updated: 2017/04/03 19:40:05 by cledant          ###   ########.fr       */
+/*   Updated: 2017/04/04 09:57:13 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	User::_add_firstname(void)
 	std::cin.clear();
 	this->_firstname.clear();
 	std::cout << "Enter your first name :" << std::endl;
-	std::cin >> this->_firstname;
+	std::getline(std::cin, this->_firstname);
 }
 
 void	User::_add_lastname(void)
@@ -48,7 +48,7 @@ void	User::_add_lastname(void)
 	std::cin.clear();
 	this->_lastname.clear();
 	std::cout << "Enter your last name :" << std::endl;
-	std::cin >> this->_lastname;
+	std::getline(std::cin, this->_lastname);
 }
 
 void	User::_add_nickname(void)
@@ -56,7 +56,7 @@ void	User::_add_nickname(void)
 	std::cin.clear();
 	this->_nickname.clear();
 	std::cout << "Enter your nickname :" << std::endl;
-	std::cin >> this->_nickname;
+	std::getline(std::cin, this->_nickname);
 }
 
 void	User::_add_login(void)
@@ -64,7 +64,7 @@ void	User::_add_login(void)
 	std::cin.clear();
 	this->_login.clear();
 	std::cout << "Enter your login :" << std::endl;
-	std::cin >> this->_login;
+	std::getline(std::cin, this->_login);
 }
 
 void	User::_add_postaladdress(void)
@@ -72,7 +72,7 @@ void	User::_add_postaladdress(void)
 	std::cin.clear();
 	this->_postaladdress.clear();
 	std::cout << "Enter your postal address :" << std::endl;
-	std::cin >> this->_postaladdress;
+	std::getline(std::cin, this->_postaladdress);
 }
 
 void	User::_add_emailaddress(void)
@@ -80,23 +80,23 @@ void	User::_add_emailaddress(void)
 	std::cin.clear();
 	this->_emailaddress.clear();
 	std::cout << "Enter your email address :" << std::endl;
-	std::cin >> this->_emailaddress;
+	std::getline(std::cin, this->_emailaddress);
 }
 
 void	User::_add_phonenumber(void)
 {
 	std::cin.clear();
 	this->_phonenumber.clear();
-	std::cout << "Enter your phonenumber :" << std::endl;
-	std::cin >> this->_phonenumber;
+	std::cout << "Enter your phone number :" << std::endl;
+	std::getline(std::cin, this->_phonenumber);
 }
 
 void	User::_add_birthday(void)
 {
 	std::cin.clear();
 	this->_birthday.clear();
-	std::cout << "Enter your birthday :" << std::endl;
-	std::cin >> this->_birthday;
+	std::cout << "Enter your birthday date :" << std::endl;
+	std::getline(std::cin, this->_birthday);
 }
 
 void	User::_add_favmeal(void)
@@ -104,7 +104,7 @@ void	User::_add_favmeal(void)
 	std::cin.clear();
 	this->_favmeal.clear();
 	std::cout << "Enter your favorite meal :" << std::endl;
-	std::cin >> this->_favmeal;
+	std::getline(std::cin, this->_favmeal);
 }
 
 void	User::_add_underwearcolor(void)
@@ -112,7 +112,7 @@ void	User::_add_underwearcolor(void)
 	std::cin.clear();
 	this->_underwearcolor.clear();
 	std::cout << "Enter your underwear color :" << std::endl;
-	std::cin >> this->_underwearcolor;
+	std::getline(std::cin, this->_underwearcolor);
 }
 
 void	User::_add_secret(void)
@@ -120,7 +120,7 @@ void	User::_add_secret(void)
 	std::cin.clear();
 	this->_secret.clear();
 	std::cout << "Enter your darkest secret :" << std::endl;
-	std::cin >> this->_secret;
+	std::getline(std::cin, this->_secret);
 }
 
 void	User::add_user(void)
@@ -178,12 +178,12 @@ void	User::display_all_info(void) const
 	std::cout << "Last name : " << this->_lastname << std::endl;
 	std::cout << "Nickname : " << this->_nickname << std::endl;
 	std::cout << "Login : " << this->_login << std::endl;
-	std::cout << "Postal Address : " << this->_postaladdress << std::endl;
-	std::cout << "Email Address : " << this->_emailaddress << std::endl;
-	std::cout << "Phonenumber : " << this->_phonenumber << std::endl;
-	std::cout << "Birthday : " << this->_birthday << std::endl;
-	std::cout << "Favorite Meal : " << this->_favmeal << std::endl;
-	std::cout << "Underwear Color : " << this->_underwearcolor << std::endl;
-	std::cout << "Darkest Secret : " << this->_secret << std::endl;
+	std::cout << "Postal address : " << this->_postaladdress << std::endl;
+	std::cout << "Email address : " << this->_emailaddress << std::endl;
+	std::cout << "Phone number : " << this->_phonenumber << std::endl;
+	std::cout << "Birthday date : " << this->_birthday << std::endl;
+	std::cout << "Favorite meal : " << this->_favmeal << std::endl;
+	std::cout << "Underwear color : " << this->_underwearcolor << std::endl;
+	std::cout << "Darkest secret : " << this->_secret << std::endl;
 }
 }
