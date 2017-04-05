@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 18:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2017/04/04 22:49:23 by cledant          ###   ########.fr       */
+/*   Updated: 2017/04/05 21:51:19 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ HumanB::~HumanB(void)
 	return ;
 }
 
-void		HumanB::attack(void)
+void		HumanB::attack(void) const
 {
 	std::cout << this->_name << " attacks with his " << this->_weapon->getType() << std::endl;
 }

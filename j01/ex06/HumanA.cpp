@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 18:04:51 by cledant           #+#    #+#             */
-/*   Updated: 2017/04/04 22:49:01 by cledant          ###   ########.fr       */
+/*   Updated: 2017/04/05 21:51:04 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ HumanA::~HumanA(void)
 	return ;
 }
 
-void		HumanA::attack(void)
+void		HumanA::attack(void) const
 {
 	std::cout << this->_name << " attacks with his " << this->_weapon.getType() << std::endl;
 }
