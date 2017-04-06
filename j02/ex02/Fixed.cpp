@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 10:15:38 by cledant           #+#    #+#             */
-/*   Updated: 2017/04/05 22:29:51 by cledant          ###   ########.fr       */
+/*   Updated: 2017/04/06 09:58:54 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Fixed::Fixed(int const src)
 
 Fixed::Fixed(float const src)
 {
-	this->_value = src * (1 << _fbit_nb);
+	this->_value = std::roundf(src * (1 << _fbit_nb));
 }
 
 Fixed::Fixed(Fixed const & src)
