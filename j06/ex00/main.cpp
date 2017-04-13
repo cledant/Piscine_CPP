@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 12:54:49 by cledant           #+#    #+#             */
-/*   Updated: 2017/04/11 18:31:57 by cledant          ###   ########.fr       */
+/*   Updated: 2017/04/12 22:12:36 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,19 @@ static void		char_conversion(std::string const &input)
 	std::string				str_result;
 
 	ss_stoi.str(input);
-	if (!(ss_stoi >> result))
-	{	
-		std::cout << "char: impossible" << str_result << std::endl;
-		return ;
+
+	if ((input.length() == 1 && std::isdigit(input.c_str()[0]) == 0) || input.length() == 0)
+	{
+		char tmp = input.c_str()[0];
+		result = *reinterpret_cast<int *>(&tmp);
+	}
+	else
+	{
+		if (!(ss_stoi >> result))
+		{	
+			std::cout << "char: impossible" << str_result << std::endl;
+			return ;
+		}
 	}
 	if (result > 127 || result < -128)
 	{	
@@ -51,10 +60,18 @@ static void		int_conversion(std::string const &input)
 	std::string				str_result;
 
 	ss_stoi.str(input);
-	if (!(ss_stoi >> result))
-	{	
-		std::cout << "int: impossible" << str_result << std::endl;
-		return ;
+	if ((input.length() == 1 && std::isdigit(input.c_str()[0]) == 0) || input.length() == 0)
+	{
+		char tmp = input.c_str()[0];
+		result = *reinterpret_cast<int *>(&tmp);
+	}
+	else
+	{
+		if (!(ss_stoi >> result))
+		{	
+			std::cout << "int: impossible" << str_result << std::endl;
+			return ;
+		}
 	}
 	ss_itos << static_cast<int>(result);
 	str_result = ss_itos.str();
@@ -72,6 +89,14 @@ static void		float_conversion(std::string const &input)
 	std::string				sub_input;
 	std::string				sub_sub_input;
 
+	if (input.length() == 0)
+	{	
+		result = 0;
+		ss_itos << std::showpoint << std::setprecision(precision) << static_cast<float>(result);
+		str_result = ss_itos.str();
+		std::cout <<  "float: " << str_result << "0f" << std::endl;
+		return ;
+	}
 	if (input == "nan" || input == "nanf")
 	{
 		result = std::numeric_limits<float>::signaling_NaN();
@@ -86,9 +111,12 @@ static void		float_conversion(std::string const &input)
 	}
 	else
 	{
-		sub_input = input.substr(input.find_first_not_of("0"));
-		if (sub_input.find_first_not_of("0123456789.") != std::string::npos)
-			sub_input.resize(sub_input.find_first_not_of("0123456789."));
+		if (input.find_first_not_of("0") != std::string::npos)
+			sub_input = input.substr(input.find_first_not_of("0"));
+		else
+			sub_input = "0";
+		if (sub_input.find_first_not_of("0123456789.-+") != std::string::npos)
+			sub_input.resize(sub_input.find_first_not_of("0123456789.-+"));
 		sub_str = sub_input.substr(sub_input.find(".") + 1);
 		ss_stoi.str(sub_input);	
 		if (sub_str.length() == sub_input.length())
@@ -97,10 +125,24 @@ static void		float_conversion(std::string const &input)
 			precision = sub_input.length();
 		else
 			precision = sub_input.length() - 1;
-		if (!(ss_stoi >> result))
+		if (input.c_str()[0] == '+' || input.c_str()[0] == '-')
+			precision--;
+		if ((input.length() == 1 && std::isdigit(input.c_str()[0]) == 0))
 		{
-			std::cout << "float: impossible" << str_result << std::endl;
+			char tmp = input.c_str()[0];
+			result = static_cast<float>(tmp);
+			ss_itos << static_cast<float>(result);
+			str_result = ss_itos.str();
+			std::cout <<  "float: " << str_result << ".0f" << std::endl;
 			return ;
+		}
+		else
+		{
+			if (!(ss_stoi >> result))
+			{
+				std::cout << "float: impossible" << str_result << std::endl;
+				return ;
+			}
 		}
 	}
 	ss_itos << std::showpoint << std::setprecision(precision) << static_cast<float>(result);
@@ -120,6 +162,14 @@ static void		double_conversion(std::string const &input)
 	std::string				sub_input;
 	std::string				sub_sub_input;
 
+	if (input.length() == 0)
+	{	
+		result = 0;
+		ss_itos << std::showpoint << std::setprecision(precision) << static_cast<double>(result);
+		str_result = ss_itos.str();
+		std::cout <<  "double: " << str_result << "0" << std::endl;
+		return ;
+	}
 	if (input == "nan" || input == "nanf")
 	{
 		result = std::numeric_limits<double>::signaling_NaN();
@@ -134,9 +184,12 @@ static void		double_conversion(std::string const &input)
 	}
 	else
 	{
-		sub_input = input.substr(input.find_first_not_of("0"));
-		if (sub_input.find_first_not_of("0123456789.") != std::string::npos)
-			sub_input.resize(sub_input.find_first_not_of("0123456789."));
+		if (input.find_first_not_of("0") != std::string::npos)
+			sub_input = input.substr(input.find_first_not_of("0"));
+		else
+			sub_input = "0";
+		if (sub_input.find_first_not_of("0123456789.-+") != std::string::npos)
+			sub_input.resize(sub_input.find_first_not_of("0123456789.-+"));
 		sub_str = sub_input.substr(sub_input.find(".") + 1);
 		ss_stoi.str(sub_input);	
 		if (sub_str.length() == sub_input.length())
@@ -145,10 +198,24 @@ static void		double_conversion(std::string const &input)
 			precision = sub_input.length();
 		else
 			precision = sub_input.length() - 1;
-		if (!(ss_stoi >> result))
+		if (input.c_str()[0] == '+' || input.c_str()[0] == '-')
+			precision--;
+		if (input.length() == 1 && std::isdigit(input.c_str()[0]) == 0)
 		{
-			std::cout << "double: impossible" << str_result << std::endl;
+			char tmp = input.c_str()[0];
+			result = static_cast<double>(tmp);
+			ss_itos << static_cast<double>(result);
+			str_result = ss_itos.str();
+			std::cout <<  "double: " << str_result << ".0" << std::endl;
 			return ;
+		}
+		else
+		{
+			if (!(ss_stoi >> result))
+			{
+				std::cout << "double: impossible" << str_result << std::endl;
+				return ;
+			}
 		}
 	}
 	ss_itos << std::showpoint << std::setprecision(precision) << static_cast<double>(result);

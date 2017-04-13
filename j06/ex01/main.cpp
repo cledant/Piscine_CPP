@@ -6,11 +6,19 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 19:57:10 by cledant           #+#    #+#             */
-/*   Updated: 2017/04/11 20:30:59 by cledant          ###   ########.fr       */
+/*   Updated: 2017/04/12 17:18:29 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.hpp"
+#include <string>
+#include <iostream>
+
+struct Data
+{
+	std::string		s1;
+	int				n;
+	std::string		s2;
+};
 
 void	*serialize(void)
 {
@@ -65,6 +73,6 @@ int		main(void)
 	std::cout << data->n << std::endl;
 	std::cout << data->s2 << std::endl;
 	std::cout << "========================================" << std::endl;
-
+	delete data;
 	return (0);
 }

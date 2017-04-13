@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 20:48:27 by cledant           #+#    #+#             */
-/*   Updated: 2017/04/11 21:20:36 by cledant          ###   ########.fr       */
+/*   Updated: 2017/04/12 17:27:15 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
-#include "ex02.hpp"
 #include <string>
 #include <iostream>
 
@@ -84,7 +83,6 @@ void	identify_from_pointer(Base *p)
 	A	*a = dynamic_cast<A *>(p);
 	B	*b = dynamic_cast<B *>(p);
 	C	*c = dynamic_cast<C *>(p);
-
 
 	if (a != NULL)
 	{
