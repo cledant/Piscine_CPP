@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 12:27:23 by cledant           #+#    #+#             */
-/*   Updated: 2017/04/12 15:59:54 by cledant          ###   ########.fr       */
+/*   Updated: 2017/04/13 17:16:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		main(void)
 	std::cout << "================" << std::endl;
 	iter<int, void>(a, 5, disp);
 	std::cout << "================" << std::endl;
-	iter(a, 10, disp);
+	iter<int, void>(a, 10, disp);
 	std::cout << "================" << std::endl;
 	iter<float, void>(b, 10, disp_float);
 	std::cout << "================" << std::endl;

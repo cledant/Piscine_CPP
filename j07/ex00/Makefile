@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2017/04/12 12:19:55 by cledant          ###   ########.fr        #
+#    Updated: 2017/04/13 17:09:33 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Werror -Wall -Wextra
 
 OBJ_DIR_NAME = obj
 
-SRCS_NAME = main.cpp
+SRCS_NAME = whatever.cpp
 
 SRCS_PATH = .
 
